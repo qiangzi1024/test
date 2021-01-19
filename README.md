@@ -1,1 +1,1 @@
-test
+go_jd_bot
