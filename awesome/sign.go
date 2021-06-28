@@ -110,7 +110,7 @@ func replaceWithKEY() {
 	jsContent = strings.ReplaceAll(jsContent, "var Key = ''", fmt.Sprintf("var Key = '%s'", JD_COOKIE))
 	if len(JD_COOKIE_2) != 0 {
 		// 替换第二个账号
-		jsContent = strings.ReplaceAll(jsContent, "var DualKey = ''", fmt.Sprintf("var DualKey = '%s'", JD_COOKIE))
+		jsContent = strings.ReplaceAll(jsContent, "var DualKey = ''", fmt.Sprintf("var DualKey = '%s'", JD_COOKIE_2))
 	}
 	ioutil.WriteFile(jdJSFile, []byte(jsContent), 0644)
 	log.Println("替换变量完毕~")
