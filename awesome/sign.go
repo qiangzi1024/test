@@ -60,7 +60,7 @@ func JustDoIt() {
 	replaceWithKEY()
 	result := doNodeCommand()
 	if len(PUSH_KEY) != 0 {
-		sendNotify(fmt.Sprintf("京东签到成功_%s", time.Now().Format("2006-01-02 15:04:05")), result)
+		sendNotify(fmt.Sprintf("京东签到结果_%s", time.Now().Format("2006-01-02 15:04:05")), result)
 	} else {
 		log.Println("未设置PUSH_KEY")
 	}
@@ -117,7 +117,7 @@ func replaceWithKEY() {
 }
 
 func sendNotify(text string, desp string) {
-	resp, err := http.PostForm(fmt.Sprintf("https://sc.ftqq.com/%s.send", PUSH_KEY), url.Values{"text": {text}, "desp": {desp}})
+	resp, err := http.PostForm(fmt.Sprintf("https://sctapi.ftqq.com/%s.send", PUSH_KEY), url.Values{"title": {text}, "desp": {desp}})
 	if err != nil {
 		log.Panicln(err)
 	}
