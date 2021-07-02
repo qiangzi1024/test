@@ -42,6 +42,7 @@ func doNodeCommand() string {
 
 var JD_COOKIE string
 var JD_COOKIE_2 string
+var OtherKey string
 var PUSH_KEY string
 var jdJSFile string
 var jdResultFile string
@@ -52,7 +53,13 @@ func JustDoIt() {
 	JD_COOKIE = os.Getenv("JD_COOKIE")
 	PUSH_KEY = os.Getenv("PUSH_KEY")
 	JD_COOKIE_2 = os.Getenv("JD_COOKIE_2")
-	if len(JD_COOKIE) == 0 {
+	OtherKey = os.Getenv("OtherKey")
+
+	log.Println(fmt.Sprintf("JD_COOKIE: %s", JD_COOKIE))
+	log.Println(fmt.Sprintf("JD_COOKIE_2: %s", JD_COOKIE_2))
+	log.Println(fmt.Sprintf("OtherKey: %s", OtherKey))
+
+	if len(JD_COOKIE) == 0 && len(OtherKey) == 0 {
 		log.Fatalln("请先填写KEY!!!")
 	}
 
@@ -111,6 +118,10 @@ func replaceWithKEY() {
 	if len(JD_COOKIE_2) != 0 {
 		// 替换第二个账号
 		jsContent = strings.ReplaceAll(jsContent, "var DualKey = ''", fmt.Sprintf("var DualKey = '%s'", JD_COOKIE_2))
+	}
+	if len(OtherKey) != 0 {
+		// 替换OtherKey
+		jsContent = strings.ReplaceAll(jsContent, "var OtherKey = '';", fmt.Sprintf("var OtherKey = '%s';", OtherKey))
 	}
 	ioutil.WriteFile(jdJSFile, []byte(jsContent), 0644)
 	log.Println("替换变量完毕~")
