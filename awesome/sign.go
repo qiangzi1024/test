@@ -53,7 +53,7 @@ func JustDoIt() {
 	JD_COOKIE = os.Getenv("JD_COOKIE")
 	PUSH_KEY = os.Getenv("PUSH_KEY")
 	JD_COOKIE_2 = os.Getenv("JD_COOKIE_2")
-	OtherKey = os.Getenv("OtherKey")
+	OtherKey = os.Getenv("OTHERKEY")
 
 	log.Println(fmt.Sprintf("JD_COOKIE: %s", JD_COOKIE))
 	log.Println(fmt.Sprintf("JD_COOKIE_2: %s", JD_COOKIE_2))
