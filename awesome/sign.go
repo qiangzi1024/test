@@ -121,7 +121,8 @@ func replaceWithKEY() {
 	}
 	if len(OtherKey) != 0 {
 		// 替换OtherKey
-		jsContent = strings.ReplaceAll(jsContent, "var OtherKey = '';", fmt.Sprintf("var OtherKey = '%s';", OtherKey))
+		jsContent = strings.ReplaceAll(jsContent, "var OtherKey = `[{", "var OtherKey2222 = `[{")
+		jsContent = strings.ReplaceAll(jsContent, "var OtherKey = ``;", fmt.Sprintf("var OtherKey = `%s`;", OtherKey))
 	}
 	ioutil.WriteFile(jdJSFile, []byte(jsContent), 0644)
 	log.Println("替换变量完毕~")
